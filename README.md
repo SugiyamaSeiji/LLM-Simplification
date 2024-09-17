@@ -20,7 +20,7 @@
     ├── InstructCollator.py
     ├── fine-tuning.py
     ├── generate.py
-    └──  utils.py
+    └── utils.py
 </pre>
 
 
@@ -28,3 +28,9 @@ InstractDataset.py
 - 変数source_textが指示文（<|begin_of_text|><|start_header_id|>system<|end_header_id|>...<|start_header_id|>assistant<|end_header_id|>）までの部分を示しています
 - 変数all_textが指示文も含めた全テキスト部分を示しています
 - alltextのうち先頭からsource_textの長さ分だけ-100で埋めることで，指示文の損失を計算しないようにしています
+
+InstructCollator.py
+- labels（正解文：平易文）においては，指示文のところを-100でpaddingしています
+- 最後にinput_idsとlabels，attention_maskを戻すようにしています
+
+  
