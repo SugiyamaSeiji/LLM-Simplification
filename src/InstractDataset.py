@@ -10,17 +10,12 @@ class InstructDataset(Dataset):
         self.features = []
         
         for data in tqdm(datas):
-<<<<<<< HEAD
             
             source_text = source_prompt(data,tokenizer) + "<|start_header_id|>assistant<|end_header_id|>"
             all_text = all_prompt(data, tokenizer)
-
-=======
             source_text = source_prompt(data,tokenizer) + "<|start_header_id|>assistant<|end_header_id|>"
             all_text = all_prompt(data, tokenizer)
 
-
->>>>>>> 01115e5 (update file)
             # 指示文のみをtokenize
             # ほしいのは指示文のlength
             source_tokenized = self.tokenizer(
@@ -35,11 +30,8 @@ class InstructDataset(Dataset):
             # 指示文と回答文を全てtokenize
             all_tokenized = self.tokenizer(
                 all_text, 
-<<<<<<< HEAD
                 padding='longest', 
-=======
                 padding=True, 
->>>>>>> 01115e5 (update file)
                 truncation=True, 
                 max_length=512, 
                 return_tensors='pt'
@@ -68,9 +60,6 @@ class InstructDataset(Dataset):
     def __getitem__(self, idx):
         return self.features[idx]
 
-<<<<<<< HEAD
-=======
-
 class InstructTestDataset(Dataset):
     def __init__(self, datas, tokenizer, ignore_index=-100):
         self.tokenizer = tokenizer
@@ -98,5 +87,3 @@ class InstructTestDataset(Dataset):
     
     def __getitem__(self, idx):
         return self.features[idx]
-
->>>>>>> 01115e5 (update file)
