@@ -29,8 +29,6 @@ class InstructCollator():
             'labels': labels,
             'attention_mask': attention_mask
         }
-<<<<<<< HEAD
-=======
 
 class InstructTestCollator():
     def __init__(self, tokenizer):
@@ -49,4 +47,3 @@ class InstructTestCollator():
             'input_ids': batch['input_ids'],
             'attention_mask': batch['attention_mask']
         }
->>>>>>> 01115e5 (update file)
