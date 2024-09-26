@@ -14,10 +14,7 @@ def fix_seed(seed):
     torch.cuda.manual_seed_all(seed)
     torch.backends.cudnn.deterministic = True
 
-<<<<<<< HEAD
-=======
 #　指示文だけをtokenize
->>>>>>> 01115e5 (update file)
 def source_prompt(data, tokenizer):
     system_prompt = "難解文を平易文に変換してください。"
     user_prompt = data["instraction"]
@@ -27,10 +24,7 @@ def source_prompt(data, tokenizer):
 
     return encoded
 
-<<<<<<< HEAD
-=======
 #　指示文+出力文（正解文）をtokenize
->>>>>>> 01115e5 (update file)
 def all_prompt(data, tokenizer):
     system_prompt = "難解文を平易文に変換してください。"
     user_prompt = data["instraction"]
@@ -40,8 +34,7 @@ def all_prompt(data, tokenizer):
              {"role": "assistant", "content": assistant_prompt}]
     encoded = tokenizer.apply_chat_template(input, tokenize=False)
     return encoded
-
-<<<<<<< HEAD
+    
 def to_dataset(comp_path, simp_path):
     comp = pd.read_csv(comp_path, names=["instraction"])
     simp = pd.read_csv(simp_path, names=["output"])
@@ -102,7 +95,7 @@ def chat(model, instruction, tokenizer, temp=0.7, conversation=''):
     output = output.split('\n\n')[-1].split(':')[-1]
     
     return output
-=======
+    
 # データセットの読み込み
 def to_dataset(comp_path, simp_path=None):
     comp = pd.read_csv(comp_path, names=["instraction"])
@@ -115,4 +108,3 @@ def to_dataset(comp_path, simp_path=None):
         dataset = Dataset.from_dict(comp)
 
     return dataset
->>>>>>> 01115e5 (update file)
