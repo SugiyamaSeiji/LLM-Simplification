@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import torch
 import argparse
 import datasets
