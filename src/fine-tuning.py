@@ -59,7 +59,7 @@ def main():
         lora_alpha=128,
         target_modules=["q_proj","k_proj","v_proj","o_proj","gate_proj","up_proj","down_proj",],
         lora_dropout=0.05,
-=======
+
 import os
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 import torch
@@ -124,23 +124,18 @@ def main():
         lora_alpha=args.lora_alpha,
         target_modules=["q_proj","k_proj","v_proj","o_proj","gate_proj","up_proj","down_proj",],
         lora_dropout=args.lora_dropout,
->>>>>>> 01115e5 (update file)
         bias="none",
         fan_in_fan_out=False,
         task_type=TaskType.CAUSAL_LM
     )
-
-<<<<<<< HEAD
-=======
     #model.gradient_checkpointing_enable()
     model.enable_input_require_grads()
->>>>>>> 01115e5 (update file)
+
     model = get_peft_model(model, lora_config)
     model.print_trainable_parameters()
     
     training_args = TrainingArguments(
-<<<<<<< HEAD
-        output_dir='/home/sugiyama/chat-vector/outputs',
+        output_dir='../outputs',
         save_total_limit=1,
         per_device_train_batch_size=8,
         num_train_epochs=1,
@@ -149,7 +144,6 @@ def main():
         fp16=True,
         dataloader_num_workers=16,
         report_to="none",
-=======
         output_dir=args.save_model,
         per_device_train_batch_size=args.per_device_train_batch_size,
         num_train_epochs=args.num_train_epochs,
@@ -166,7 +160,6 @@ def main():
         save_strategy="epoch",
         load_best_model_at_end=True,
         metric_for_best_model="eval_loss"
->>>>>>> 01115e5 (update file)
     )
 
     trainer = Trainer(
@@ -174,15 +167,10 @@ def main():
             data_collator=collator,
             args=training_args,
             train_dataset=train_dataset,
-<<<<<<< HEAD
-        )
-
-=======
             eval_dataset=valid_dataset,
             callbacks=[EarlyStoppingCallback(early_stopping_patience=3)]
         )
     
->>>>>>> 01115e5 (update file)
     model.config.use_cache = False
     trainer.train()
 
